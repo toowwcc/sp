@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频共享网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>视频共享网站</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="搜索视频...">
+                <button onclick="searchVideos()">搜索</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- 上传区域 -->
+            <section class="upload-section">
+                <h2>上传视频</h2>
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="videoFile" accept="video/*" style="display: none;">
+                    <div class="upload-content">
+                        <div class="upload-icon">📹</div>
+                        <p>点击或拖拽视频文件到这里</p>
+                        <p class="upload-hint">支持 MP4, AVI, MOV 等格式</p>
+                    </div>
+                </div>
+                <div class="upload-form" id="uploadForm" style="display: none;">
+                    <input type="text" id="videoTitle" placeholder="视频标题" required>
+                    <textarea id="videoDescription" placeholder="视频描述"></textarea>
+                    <button onclick="uploadVideo()">上传视频</button>
+                    <button onclick="cancelUpload()">取消</button>
+                </div>
+            </section>
+
+            <!-- 视频列表 -->
+            <section class="video-section">
+                <h2>视频列表</h2>
+                <div class="video-grid" id="videoGrid">
+                    <!-- 视频卡片将在这里动态生成 -->
+                </div>
+            </section>
+        </main>
+
+        <!-- 视频播放模态框 -->
+        <div class="modal" id="videoModal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div class="video-player">
+                    <video id="modalVideo" controls>
+                        <source src="" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalDescription"></p>
+                    <div class="video-actions">
+                        <button onclick="downloadVideo()" id="downloadBtn">下载视频</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
